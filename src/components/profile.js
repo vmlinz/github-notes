@@ -1,8 +1,16 @@
 import React, {PropTypes} from 'react';
+import MixinDecorator from 'react-mixin-decorator';
+import ReactFireMixin from 'reactfire';
 
 import GithubProfile from './github/github-profile';
 import Repos from './github/repos';
 import Notes from './notes';
+
+const ReactFireDecorator = MixinDecorator(
+  'ReactFireDecorator',
+  ReactFireMixin,
+  { bindAsArray: ReactFireMixin.bindAsArray }
+);
 
 class Profile extends React.Component {
   constructor(props) {
@@ -13,6 +21,8 @@ class Profile extends React.Component {
       repos: [{name: 'git'}],
       notes: [{name: 'help'}],
     };
+
+    console.log(this);
   }
 
   render() {
@@ -30,9 +40,6 @@ class Profile extends React.Component {
       </div>
     );
   }
-}
-
-Profile.propTypes = {
 };
 
-export default Profile;
+export default ReactFireDecorator(Profile);
