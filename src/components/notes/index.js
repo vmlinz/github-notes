@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import { connect } from 'react-firebase';
 
 class Notes extends React.Component {
   constructor(props) {
@@ -6,6 +7,7 @@ class Notes extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (<div>
       <h2>Notes: {JSON.stringify(this.props.notes)}</h2>
     </div>);
@@ -13,6 +15,11 @@ class Notes extends React.Component {
 }
 
 Notes.propTypes = {
+  notes: React.PropTypes.object,
 };
 
-export default Notes;
+const mapFirebaseToProps = ({ username }, ref) => {
+  return { notes: `${username}` };
+};
+
+export default connect(mapFirebaseToProps)(Notes);
