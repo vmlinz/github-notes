@@ -20,10 +20,10 @@ class Profile extends React.Component {
     return (
       <div className="row">
         <div className="col-md-4">
-          <GithubProfile name={this.props.params.username} bio={this.state.bio} />
+          <GithubProfile username={this.props.params.username} bio={this.state.bio} />
         </div>
         <div className="col-md-4">
-          <Repos repos={this.state.repos} />
+          <Repos username={this.props.params.username} repos={this.state.repos} />
         </div>
         <div className="col-md-4">
           <Notes username={this.props.params.username} />

@@ -11,7 +11,7 @@ class Notes extends React.Component {
   render() {
     if(this.props.notes) {
       return (<div>
-        <h2>Notes for {this.props.username}</h2>
+        <h2>Name: {this.props.username}</h2>
         <NotesList notes={this.props.notes}/>
       </div>);
     } else {
@@ -23,6 +23,7 @@ class Notes extends React.Component {
 }
 
 Notes.propTypes = {
+  username: React.PropTypes.string.isRequired,
   notes: React.PropTypes.object,
 };
 
