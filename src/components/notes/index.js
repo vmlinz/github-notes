@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import { connect } from 'react-firebase';
 
 import NotesList from './notes-list';
+import AddNote from './add-note';
+import Header from './header';
 
 class Notes extends React.Component {
   constructor(props) {
@@ -12,8 +14,8 @@ class Notes extends React.Component {
     console.log(this.props);
     return (this.props.notes?
       <div>
-        <button onClick={() => this.props.addNote('fuck')}>add a note</button>
-        <h2>Name: {this.props.username}</h2>
+        <Header username={this.props.username}/>
+        <AddNote addNote={this.props.addNote}/>
         <NotesList notes={this.props.notes}/>
       </div>:
       <div>
@@ -25,6 +27,7 @@ class Notes extends React.Component {
 Notes.propTypes = {
   username: React.PropTypes.string.isRequired,
   notes: React.PropTypes.object,
+  addNote: React.PropTypes.func,
 };
 
 const mapFirebaseToProps = ({ username }, ref) => {
