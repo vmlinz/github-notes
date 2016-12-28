@@ -9,16 +9,16 @@ class Notes extends React.Component {
   }
 
   render() {
-    if(this.props.notes) {
-      return (<div>
+    console.log(this.props);
+    return (this.props.notes?
+      <div>
+        <button onClick={() => this.props.addNote('fuck')}>add a note</button>
         <h2>Name: {this.props.username}</h2>
         <NotesList notes={this.props.notes}/>
-      </div>);
-    } else {
-      return (<div>
+      </div>:
+      <div>
         <h2>Notes(loading)</h2>
       </div>);
-    }
   }
 }
 
@@ -28,7 +28,10 @@ Notes.propTypes = {
 };
 
 const mapFirebaseToProps = ({ username }, ref) => {
-  return { notes: `${username}` };
+  return {
+    notes: `${username}`,
+    addNote: note => ref(username).push(note),
+  };
 };
 
 export default connect(mapFirebaseToProps)(Notes);
