@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 import GithubProfile from './github/github-profile';
 import Repos from './github/repos';
@@ -11,28 +11,26 @@ class Profile extends React.Component {
     this.state = {
       bio: {name: 'vmlinz'},
       repos: [{name: 'git'}],
-      notes: [{name: 'help'}],
+      notes: [],
     };
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="row">
         <div className="col-md-4">
-          <GithubProfile name={this.props.params.username} bio={this.state.bio} />
+          <GithubProfile username={this.props.params.username} bio={this.state.bio} />
         </div>
         <div className="col-md-4">
-          <Repos repos={this.state.repos} />
+          <Repos username={this.props.params.username} repos={this.state.repos} />
         </div>
         <div className="col-md-4">
-          <Notes notes={this.state.notes} />
+          <Notes username={this.props.params.username} />
         </div>
       </div>
     );
   }
-}
-
-Profile.propTypes = {
 };
 
 export default Profile;
