@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "now": "^0.37.0",
+    "now": "^0.37.1",
     "react-scripts": "0.8.4",
     "serve": "^2.0.0"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bootstrap": "3",
     "firebase": "^3.6.4",
     "lodash": "^4.17.3",

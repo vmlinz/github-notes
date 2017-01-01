@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+import { getUserInfoAndRepos } from '../utils/github';
+
 import GithubProfile from './github/github-profile';
 import Repos from './github/repos';
 import Notes from './notes';
@@ -13,6 +15,13 @@ class Profile extends React.Component {
       repos: [{name: 'git'}],
       notes: [],
     };
+  }
+
+  componentWillMount() {
+    getUserInfoAndRepos(this.props.params.username)
+      .then(({ bio, repos }) => {
+        return this.setState({...this.state, bio, repos})
+      });
   }
 
   render() {
