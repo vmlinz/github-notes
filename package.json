@@ -8,6 +8,7 @@
     "serve": "^2.0.0"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bootstrap": "3",
     "firebase": "^3.6.4",
     "lodash": "^4.17.3",

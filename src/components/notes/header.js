@@ -1,7 +1,7 @@
 import React from "react";
 
 const Header = (props) => (
-  <h2>Name: {props.username}</h2>
+  <h2>Notes</h2>
 );
 
 Header.propTypes = {
