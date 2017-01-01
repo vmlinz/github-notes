@@ -2,9 +2,13 @@ import React, {PropTypes} from 'react';
 
 const RepoItem = ({ repo }) => {
   return (<li className="list-group-item">
-    {repo.html_url && <h4><a href={repo.html_url}>{repo.html_url}</a></h4>}
+    {repo.html_url && <h4><a href={repo.html_url}>{repo.name}</a></h4>}
     {repo.description && <p>{repo.description}</p>}
   </li>);
+};
+
+RepoItem.propTypes = {
+  repo: React.PropTypes.object.isRequired,
 };
 
 const ReposList = ({ repos }) => {
@@ -16,18 +20,17 @@ const ReposList = ({ repos }) => {
   </ul>);
 }
 
-class Repos extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+ReposList.propTypes = {
+  repos: React.PropTypes.array.isRequired,
+};
 
-  render() {
-    console.log(this.props.repos);
-    return (<div>
-      <h2>Repos</h2>
-      {this.props.repos && <ReposList repos={this.props.repos} />}
-    </div>);
-  }
+const Repos = (props) => {
+  return (<div>
+    <h2>Repos</h2>
+    {props.repos ?
+    <ReposList repos={props.repos} /> :
+    <h2>Loading</h2>}
+  </div>);
 }
 
 Repos.propTypes = {

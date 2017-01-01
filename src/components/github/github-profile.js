@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const Header = ({ username }) => {
+const Header = () => {
   return (<h2>
     Profile
   </h2>);
@@ -14,17 +14,15 @@ const Bio = ({ bio }) => {
   </div>);
 };
 
-class GithubProfile extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+Bio.propTypes = {
+  bio: React.PropTypes.object.isRequired,
+};
 
-  render() {
-    return (<div>
-      <Header username={this.props.username} />
-      {this.props.bio && <Bio bio={this.props.bio} />}
-    </div>);
-  }
+const GithubProfile = (props) => {
+  return (<div>
+    {props.username && <Header />}
+    {props.bio && <Bio bio={props.bio} />}
+  </div>);
 }
 
 GithubProfile.propTypes = {

@@ -1,14 +1,9 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 
-class Home extends React.Component {
-  render() {
-    return (<h2 className="text-center">
-      Home Component
-    </h2>);
-  }
-}
-
-Home.propTypes = {
+const Home = () => {
+  return (<h2 className="text-center">
+    Search people on github
+  </h2>);
 };
 
 export default Home;

@@ -5,24 +5,19 @@ import NotesList from './notes-list';
 import AddNote from './add-note';
 import Header from './header';
 
-class Notes extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    console.log(this.props);
-    return (this.props.notes?
-      <div>
-        <Header username={this.props.username}/>
-        <AddNote addNote={this.props.addNote}/>
-        <NotesList notes={this.props.notes}/>
-      </div>:
-      <div>
-        <h2>Notes(loading)</h2>
-      </div>);
-  }
-}
+const Notes = (props) => {
+  return (<div>
+    {props.notes?
+    <div>
+      <Header username={props.username}/>
+      <AddNote addNote={props.addNote}/>
+      <NotesList notes={props.notes}/>
+    </div>:
+    <div>
+      <h2>Notes(loading)</h2>
+    </div>}
+  </div>);
+};
 
 Notes.propTypes = {
   username: React.PropTypes.string.isRequired,

@@ -15,7 +15,7 @@ class SearchGithub extends React.Component {
 
   handleSubmit() {
     // goto target profile url by using router
-    this.props.router.push(`/profile/${this.state.username}`)
+    this.props.router.push(`/profile/${this.state.username}/`)
 
     // restore username state
     this.setState({
